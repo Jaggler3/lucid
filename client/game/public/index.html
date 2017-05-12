@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mane</title>
+	<style>
+		html, body
+		{
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		#main-canvas
+		{
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="main-canvas"></canvas>
+	<script>
+	var canvas = document.getElementById("main-canvas");
+	var context = canvas.getContext('2d');
+
+	var MOUSE_DOWN = false;
+	var FIRST_MOUSE_DOWN = false;
+	var KEYS_DOWN = [];
+	var KEYS_FIRST_DOWN = [];
+
+	function updateData(pixels)
+	{
+		var img_data = context.createImageData(pixels.length, pixels[0].length);
+		for(var i = 0; i < img_data.data.length; i += 4)
+		{
+			var e = i / 4;
+			var x = e % pixels.length;
+			var y = Math.floor(e / pixels.length);
+			var data = pixels[x][y] !== undefined ? pixels[x][y] : [0, 0, 0, 255];
+			img_data.data[i] = data[0];
+			img_data.data[i + 1] = data[1];
+			img_data.data[i + 2] = data[2];
+			img_data.data[i + 3] = data[3];
+		}
+
+		context.putImageData(img_data, 0, 0);
+	}
+	function resize()
+	{
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+	}
+	canvas.addEventListener('mousemove', function(evt) {
+		MOUSE_POS = new Vector2(evt.clientX - canvas.getBoundingClientRect().left - canvas.width / 2, evt.clientY - canvas.getBoundingClientRect().top - canvas.height / 2);
+	}, false);
+
+	canvas.addEventListener('mousedown', function(evt) {
+		FIRST_MOUSE_DOWN = !MOUSE_DOWN;
+		MOUSE_DOWN = true;
+		MOUSE_POS = new Vector2(evt.clientX - canvas.getBoundingClientRect().left - canvas.width / 2, evt.clientY - canvas.getBoundingClientRect().top - canvas.height / 2);
+	}, false);
+
+	canvas.addEventListener('touchstart', function(evt){
+		FIRST_MOUSE_DOWN = !MOUSE_DOWN;
+		MOUSE_DOWN = true;
+		MOUSE_POS = new Vector2(evt.clientX - canvas.getBoundingClientRect().left - canvas.width / 2, evt.clientY - canvas.getBoundingClientRect().top - canvas.height / 2);
+	}, false);
+
+	canvas.addEventListener('mouseup', function(evt) {
+		MOUSE_DOWN = false;
+		FIRST_MOUSE_DOWN = false;
+	}, false);
+
+	window.addEventListener('keydown', function(evt) {
+		PROCESS_KEY_INPUT_DOWN(evt.keyCode);
+	}, false);
+	window.addEventListener('keyup', function(evt) {
+		PROCESS_KEY_INPUT_UP(evt.keyCode);
+	}, false);
+
+	window.addEventListener('contextmenu', function(ev) {
+		ev.preventDefault();
+		return false;
+	}, false);
+
+	function PROCESS_KEY_INPUT_DOWN(e) {
+		if (KEYS_DOWN.indexOf(e) == -1) {
+			KEYS_FIRST_DOWN.push(e);
+			KEYS_DOWN.push(e);
+		}
+	}
+
+	function PROCESS_KEY_INPUT_UP(e) {
+		if (KEYS_DOWN.indexOf(e) != -1) {
+			KEYS_DOWN.splice(KEYS_DOWN.indexOf(e), 1);
+		}
+	}
+	</script>
+	<script type="text/javascript" src="src/lib.js"></script>
+	<script type="text/javascript" src="src/mane-system.js"></script>
+</body>
+</html>

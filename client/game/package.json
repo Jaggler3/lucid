@@ -1,19 +1,5 @@
 {
-     "name": "mane",
-     "version": "1.0.0",
-     "description": "Online game using pre-render concepts to render a 3D game in HTML",
-     "main": "index.js",
-     "scripts": {
-          "run": "node index.js"
-     },
-     "repository": {
-          "type": "git",
-          "url": "git+https://github.com/Jaggler3/mane.git"
-     },
-     "author": "Martin Darazs",
-     "license": "MIT",
-     "bugs": {
-          "url": "https://github.com/Jaggler3/mane/issues"
-     },
-     "homepage": "https://github.com/Jaggler3/mane#readme"
+	"name"    : "mane",
+	"version" : "0.1.0",
+	"main"    : "main.js"
 }
