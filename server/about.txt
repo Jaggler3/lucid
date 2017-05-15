@@ -1,0 +1,5 @@
+The Mane backend provides
+	*information and objects needed to update
+	*public server list
+	*script marketplace
+	*account management/data
