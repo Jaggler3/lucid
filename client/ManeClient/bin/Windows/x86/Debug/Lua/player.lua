@@ -1,5 +1,4 @@
-﻿IDLE_RIGHT =            Loader.GetTexture("player/player_idle_right")
-IDLE_FALLING_RIGHT =    Loader.GetTexture("player/player_falling_right")
+﻿IDLE =            Loader.GetTexture("player/player_idle")
 
 SPACE_DOWN = false;
 
@@ -39,9 +38,9 @@ ManeScript = {
 
         grounded = (py != gameObject.Position.Y);
         if(grounded) then
-            gameObject.Texture = IDLE_FALLING_RIGHT
+            --gameObject.Texture = IDLE_FALLING_RIGHT
         else
-            gameObject.Texture = IDLE_RIGHT;
+            --gameObject.Texture = IDLE_RIGHT;
         end
         py = gameObject.Position.Y;
 

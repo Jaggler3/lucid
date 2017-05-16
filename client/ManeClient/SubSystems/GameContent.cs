@@ -8,8 +8,7 @@ namespace Mane.SubSystems
             "unit",
             "wall_left",
             "wall_right",
-            "player/player_idle_right",
-            "player/player_falling_right"
+            "player/player_idle",
         };
         
         public static Texture2D[] LoadedTextures = new Texture2D[TextureNames.Length];

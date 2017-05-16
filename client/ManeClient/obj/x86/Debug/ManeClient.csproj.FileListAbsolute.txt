@@ -32,3 +32,4 @@ C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\MoonSharp.Int
 C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Jitter.dll
 C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Jitter.xml
 C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\debug.xnb
+C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\player\player_idle.xnb
