@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 
 namespace Mane.SubSystems
@@ -19,6 +20,17 @@ namespace Mane.SubSystems
             SetTitle(TITLE);
             SetSize(INIT_WIDTH, INIT_HEIGHT);
             DisableVSync();
+            ShowMouse();
+        }
+
+        public static void ShowMouse()
+        {
+            mg_obj.IsMouseVisible = true;
+        }
+
+        public static void HideMouse()
+        {
+            mg_obj.IsMouseVisible = false;
         }
 
         public static void SetSize(int width, int height)

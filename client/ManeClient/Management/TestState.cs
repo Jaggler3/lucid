@@ -59,6 +59,8 @@ namespace Mane.Management
 
             go.NewScript("Unit", "Lua/unit.lua");
 
+            go.collider.Static = true;
+
             return go;
         }
     }

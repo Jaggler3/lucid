@@ -7,7 +7,7 @@ namespace Mane.SubSystems
 {
     class Physics
     {
-        public const float GravityVal = 1000;
+        public const float GravityVal = -9.81f * 100f;
         public static List<PhysicsObject> world = new List<PhysicsObject>();
 
         public class CollisionData
@@ -15,6 +15,8 @@ namespace Mane.SubSystems
             public PhysicsObject Collider;
 
             public bool Contact = false;
+
+            public Vector2 resolve = Vector2.Zero;
 
             public CollisionData(PhysicsObject Collider, bool Contact)
             {
@@ -29,15 +31,42 @@ namespace Mane.SubSystems
             world[world.Count - 1] = po;
         }
 
-        public static Vector2 Gravity(PhysicsObject po, float force)
+        public static void RemoveObject(PhysicsObject po)
         {
-            Vector2 res = new Vector2(po.Position.X, po.Position.Y - force);
-            CollisionData approve = Approve(po, res);
-            if(approve.Contact) // approved
+            world.Remove(po);
+        }
+
+        public static void Step(GameTime gameTime)
+        {
+            for (int i = 0; i < world.Count; i++)
             {
-                return new Vector2(po.Position.X, approve.Collider.Position.Y + approve.Collider.Size.Y / 2 + po.Size.Y / 2);
+                PhysicsObject po = world[i];
+
+                if(po.Static)
+                {
+                    // dont move
+                }
+                else
+                {
+                    po.Position = Move(po, gameTime.ElapsedGameTime.Milliseconds / 1000f);
+                }
             }
-            return res;
+        }
+
+        public static Vector2 Move(PhysicsObject po, float delta)
+        {
+            Vector2 res = po.Position + po.Velocity * po.Mass * delta;
+            CollisionData approve = Approve(po, res);
+
+            if(approve.Contact) // not approved
+            {
+                po.Velocity = Vector2.Zero;
+                return po.Position + approve.resolve;
+            }
+
+            po.Velocity.Y += delta * GravityVal;
+
+            return res; // approved
         }
 
         public static CollisionData Approve(PhysicsObject po, Vector2 res)
@@ -46,10 +75,20 @@ namespace Mane.SubSystems
             {
                 if (world[i] != po && world[i].HasCollision(po.Size, res))
                 {
-                    return new CollisionData(world[i], true);
+                    CollisionData cd = new CollisionData(world[i], true);
+
+                    cd.resolve = Resolve(po, world[i]);
+
+                    return cd;
                 }
             }
             return new CollisionData(null, false);
+        }
+
+        public static Vector2 Resolve(PhysicsObject po, PhysicsObject c)
+        {
+            // calculate how much the player should move so that it is on the collided object's edge
+            return Vector2.Zero;
         }
     }
 }

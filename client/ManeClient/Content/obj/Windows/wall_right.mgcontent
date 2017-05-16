@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/wall_right.png</SourceFile>
-  <SourceTime>2017-05-13T15:28:39.3343846-04:00</SourceTime>
+  <SourceTime>2017-05-15T20:50:42.3635475-04:00</SourceTime>
   <DestFile>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/bin/Windows/wall_right.xnb</DestFile>
-  <DestTime>2017-05-13T15:29:36.6406524-04:00</DestTime>
+  <DestTime>2017-05-15T20:52:12.9818389-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T10:05:36-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

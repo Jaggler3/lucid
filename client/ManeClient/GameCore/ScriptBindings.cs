@@ -21,8 +21,6 @@ namespace Mane.GameCore
         {
             public static Texture2D GetTexture(string path)
             {
-                Console.WriteLine(path);
-                Console.WriteLine(GameContent.GetTexture(path).Height);
                 return GameContent.GetTexture(path);
             }
         }
@@ -30,11 +28,6 @@ namespace Mane.GameCore
         public class PhysicsController
         {
             public float GravityVal = Physics.GravityVal;
-
-            public Vector2 Gravity(PhysicsObject po, float force)
-            {
-                return Physics.Gravity(po, force);
-            }
         }
     }
 }

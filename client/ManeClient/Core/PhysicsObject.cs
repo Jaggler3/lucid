@@ -9,10 +9,20 @@ namespace Mane.Core
         public Vector2 Position;
         public Vector2 Size;
 
+        public Vector2 Velocity;
+        public Vector2 Acceleration;
+
+        public float Mass;
+
+        public bool Static = false;
+
         public PhysicsObject()
         {
             Position = Vector2.Zero;
             Size = Vector2.Zero;
+            Velocity = Vector2.Zero;
+            Acceleration = Vector2.Zero;
+            Mass = 1;
 
             Physics.AddObject(this);
         }
@@ -23,6 +33,16 @@ namespace Mane.Core
             this.Size = Size;
 
             Physics.AddObject(this);
+        }
+
+        public void ApplyForce(Vector2 force)
+        {
+            Velocity += force;
+        }
+
+        public void ApplyForce(float x, float y)
+        {
+            ApplyForce(new Vector2(x, y));
         }
 
         public void setPosition(Vector2 Position)

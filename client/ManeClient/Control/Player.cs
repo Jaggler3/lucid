@@ -10,7 +10,9 @@ namespace Mane.Control
     {
         public static GameObject gameObject = new GameObject();
 
-        public const int unitScale = 40;
+        public const int unitScale = 80;
+
+        public static Vector2 playerSize = new Vector2(48, 78);
 
         public static Texture2D IDLE_RIGHT;
         public static Texture2D IDLE_FALLING_RIGHT;
@@ -23,7 +25,9 @@ namespace Mane.Control
             gameObject.Name = "Player";
             gameObject.Position = new Vector2(0, 200);
             gameObject.Texture = IDLE_RIGHT;
-            gameObject.Size = new Vector2(unitScale, unitScale);
+            gameObject.Size = playerSize;
+
+            gameObject.collider.Mass = 1;
 
             gameObject.NewScript("Test", "Lua/player.lua");
 

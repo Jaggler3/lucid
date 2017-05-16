@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Mane.SubSystems;
+using Mane.Control;
 
 namespace Mane.GameCore
 {
@@ -70,6 +71,7 @@ namespace Mane.GameCore
             SetGlobal("Input", input);
             SetGlobal("Loader", loader);
             SetGlobal("Physics", physics);
+            SetGlobal("_UnitSize", Player.unitScale);
 
             DynValue res = _script.DoString("ManeScript = {};" + Source + "return ManeScript;");
             maneObj = res.Table;

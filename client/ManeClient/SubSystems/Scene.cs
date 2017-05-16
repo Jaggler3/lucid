@@ -30,6 +30,8 @@ namespace Mane.SubSystems
             Scene.gameTime = gameTime;
             currentState.DeltaTime = gameTime.ElapsedGameTime.Milliseconds / 1000f;
             currentState.Refresh(gameTime);
+
+            Physics.Step(gameTime);
         }
 
         public static GameState GetState()
