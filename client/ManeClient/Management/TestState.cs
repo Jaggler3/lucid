@@ -21,13 +21,25 @@ namespace Mane.Management
 
         public override void Begin()
         {
-            for(int i = 0; i < unitCountWide; i++)
+            for (int j = -unitCountDeep; j < wallHeight; j++)
+            {
+                GameObject wall = CreateWall("wall_left", new Vector2(-unitSize.X - unitSize.X * unitCountWide / 2, j * unitSize.Y), unitSize);
+                Entities.Add(wall);
+            }
+
+            for (int i = 0; i < unitCountWide; i++)
             {
                 for (int j = 0; j < unitCountDeep; j++)
                 {
                     GameObject unit = CreateUnit("unit", new Vector2(i * unitSize.X - unitSize.X * unitCountWide / 2, -j * unitSize.Y), unitSize);
                     Entities.Add(unit);
                 }
+            }
+
+            for (int j = -unitCountDeep; j < wallHeight; j++)
+            {
+                GameObject wall = CreateWall("wall_right", new Vector2(unitSize.X * unitCountWide / 2, j * unitSize.Y), unitSize);
+                Entities.Add(wall);
             }
 
             Entities.Add(Player.Initialize());
@@ -49,12 +61,24 @@ namespace Mane.Management
 
         }
 
+        public GameObject CreateWall(string texture, Vector2 position, Vector2 size)
+        {
+            GameObject go = new GameObject();
+            go.Name = "Wall";
+            go.Position = position;
+            go.Texture = GameContent.GetTexture(texture);
+            go.Size = size;
+            go.collider.Static = true;
+
+            return go;
+        }
+
         public GameObject CreateUnit(string texture, Vector2 position, Vector2 size)
         {
             GameObject go = new GameObject();
             go.Name = "Unit";
             go.Position = position;
-            go.Texture = GameContent.GetTexture("unit");
+            go.Texture = GameContent.GetTexture(texture);
             go.Size = size;
 
             go.NewScript("Unit", "Lua/unit.lua");

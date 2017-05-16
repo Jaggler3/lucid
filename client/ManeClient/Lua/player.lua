@@ -1,10 +1,13 @@
-﻿IDLE_RIGHT = Loader.GetTexture("player/player_idle_right")
-IDLE_FALLING_RIGHT = Loader.GetTexture("player/player_falling_right")
+﻿IDLE_RIGHT =            Loader.GetTexture("player/player_idle_right")
+IDLE_FALLING_RIGHT =    Loader.GetTexture("player/player_falling_right")
 
 SPACE_DOWN = false;
 
 --moving how many units per second
 MOVE_UPS = 3;
+
+--jump height
+JUMP = 2;
 
 ManeScript = {
 
@@ -16,15 +19,18 @@ ManeScript = {
 
     Update = function()
         if(Input.IsKeyDown('D')) then
-            gameObject.translate(deltaTime * (MOVE_UPS * _UnitSize), 0);
-            gameObject.Texture = IDLE_FALLING_RIGHT;
+            gameObject.Translate(deltaTime * (MOVE_UPS * _UnitSize), 0);
+            gameObject.SetToHorizontalVerticalAligned();
         end
         if(Input.IsKeyDown('A')) then
-            gameObject.translate(deltaTime * (MOVE_UPS * -_UnitSize), 0);
+            gameObject.Translate(deltaTime * (MOVE_UPS * -_UnitSize), 0);
+            gameObject.SetToHorizontalFlipped();
         end
         if(Input.IsKeyDown(' ') and gameObject.Grounded) then
             if(not SPACE_DOWN) then
-                gameObject.ApplyForce(0, 500);
+                jc_g = -Physics.GravityVal * _UnitSize;
+                jc_f = math.sqrt(2 * jc_g * JUMP);
+                gameObject.ApplyForce(0, jc_f);
             end
             SPACE_DOWN = true;
         else
@@ -38,6 +44,8 @@ ManeScript = {
             gameObject.Texture = IDLE_RIGHT;
         end
         py = gameObject.Position.Y;
+
+        Rendering.CameraOffset = (Rendering.CameraOffset - gameObject.Position) / 2;
     end,
 
     Destruct = function()

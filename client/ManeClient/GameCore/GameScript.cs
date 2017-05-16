@@ -24,11 +24,13 @@ namespace Mane.GameCore
             UserData.RegisterType<ScriptBindings.InputController>();
             UserData.RegisterType<ScriptBindings.Loader>();
             UserData.RegisterType<ScriptBindings.PhysicsController>();
+            UserData.RegisterType<ScriptBindings.RenderingAccess>();
         }
 
         public static ScriptBindings.InputController input = new ScriptBindings.InputController();
         public static ScriptBindings.Loader loader = new ScriptBindings.Loader();
         public static ScriptBindings.PhysicsController physics = new ScriptBindings.PhysicsController();
+        public static ScriptBindings.RenderingAccess renderingAccess = new ScriptBindings.RenderingAccess();
 
         public string Name;
         public string Path;
@@ -72,6 +74,7 @@ namespace Mane.GameCore
             SetGlobal("Loader", loader);
             SetGlobal("Physics", physics);
             SetGlobal("_UnitSize", Player.unitScale);
+            SetGlobal("Rendering", renderingAccess);
 
             DynValue res = _script.DoString("ManeScript = {};" + Source + "return ManeScript;");
             maneObj = res.Table;

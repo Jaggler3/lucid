@@ -29,5 +29,20 @@ namespace Mane.GameCore
         {
             public float GravityVal = Physics.GravityVal;
         }
+
+        public class RenderingAccess
+        {
+            public Vector2 CameraOffset
+            {
+                get
+                {
+                    return Rendering.CameraOffset;
+                }
+                set
+                {
+                    Rendering.CameraOffset = value;
+                }
+            }
+        }
     }
 }

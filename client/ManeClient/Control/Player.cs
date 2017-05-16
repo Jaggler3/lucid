@@ -36,20 +36,7 @@ namespace Mane.Control
 
         public static void Update(GameTime gameTime)
         {
-            /*
-            float delta = gameTime.ElapsedGameTime.Milliseconds / 1000f;
-            float py = gameObject.Position.Y;
-            gameObject.Position = Physics.Gravity(gameObject.collider, delta * Physics.GravityVal);
-            bool grounded = (py == gameObject.Position.Y);
-            if(!grounded)
-            {
-                gameObject.Texture = IDLE_FALLING_RIGHT;
-            }
-            else
-            {
-                gameObject.Texture = IDLE_RIGHT;
-            }
-            */
+            // anything that can't be done in the player.lua script (or networking ?)
         }
     }
 }

@@ -24,14 +24,19 @@ namespace Mane.GameCore
             get { return _size; }
             set { _size = value; collider.Size = value; }
         }
-
+        
         public Texture2D Texture;
 
         public GameScript script;
 
+        public int Layer = 0;
+
+        public SpriteEffects DrawEffects;
+
         public GameObject()
         {
             collider = new PhysicsObject();
+            DrawEffects = SpriteEffects.None;
         }
 
         public void NewScript(string Name, string Path)
@@ -52,7 +57,22 @@ namespace Mane.GameCore
             }
         }
 
-        public void translate(float x, float y)
+        public void SetToHorizontalFlipped()
+        {
+            DrawEffects = SpriteEffects.FlipHorizontally;
+        }
+
+        public void SetToVerticalFlipped()
+        {
+            DrawEffects = SpriteEffects.FlipVertically;
+        }
+
+        public void SetToHorizontalVerticalAligned()
+        {
+            DrawEffects = SpriteEffects.None;
+        }
+
+        public void Translate(float x, float y)
         {
             Vector2 res = new Vector2(Position.X + x, Position.Y + y);
             Position = Physics.Approve(collider, res).Contact ? Position : res;
@@ -85,11 +105,7 @@ namespace Mane.GameCore
         {
             get
             {
-                return new Rectangle(
-                (int)Math.Round((-_size.X / 2) + _position.X + Display.GetWidth() / 2),
-                (int)Math.Round((-_size.Y / 2) + -_position.Y + Display.GetHeight() / 2),
-                (int)Math.Round(_size.X),
-                (int)Math.Round(_size.Y)).Contains(Mouse.GetState().Position) && Mouse.GetState().LeftButton == ButtonState.Pressed;
+                return GetRenderRect().Contains(Mouse.GetState().Position) && Mouse.GetState().LeftButton == ButtonState.Pressed;
             }
         }
 
@@ -115,12 +131,18 @@ namespace Mane.GameCore
 
         public override void Render(SpriteBatch spriteBatch)
         {
-            Rectangle rect = new Rectangle(
-                (int)Math.Round((-_size.X / 2) + _position.X + Display.GetWidth() / 2), 
-                (int)Math.Round((-_size.Y / 2) + -_position.Y + Display.GetHeight() / 2), 
-                (int)Math.Round(_size.X), 
+            //TODO: implement rotations, for rendering and for physics --\|/
+            //TODO: implement layers to work with physics (or not?) -----------------------------\|||||/
+            spriteBatch.Draw(Texture, GetRenderRect(), null, Color.White, 0, Vector2.Zero, DrawEffects, Layer);
+        }
+
+        public Rectangle GetRenderRect()
+        {
+            return new Rectangle(
+                (int)Math.Round((-_size.X / 2) + _position.X + Display.GetWidth() / 2 + Rendering.CameraOffset.X),
+                (int)Math.Round((-_size.Y / 2) - _position.Y + Display.GetHeight() / 2 - Rendering.CameraOffset.Y),
+                (int)Math.Round(_size.X),
                 (int)Math.Round(_size.Y));
-            spriteBatch.Draw(Texture, rect, Color.White);
         }
     }
 }
