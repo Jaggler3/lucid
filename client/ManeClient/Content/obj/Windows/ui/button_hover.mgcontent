@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/unit.png</SourceFile>
-  <SourceTime>2017-05-15T20:56:57.3958635-04:00</SourceTime>
-  <DestFile>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/bin/Windows/unit.xnb</DestFile>
-  <DestTime>2017-05-15T20:57:01.8061417-04:00</DestTime>
+  <SourceFile>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/ui/button_hover.png</SourceFile>
+  <SourceTime>2017-05-18T00:08:37.859555-04:00</SourceTime>
+  <DestFile>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/bin/Windows/ui/button_hover.xnb</DestFile>
+  <DestTime>2017-05-18T00:08:40.7864391-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T10:05:36-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

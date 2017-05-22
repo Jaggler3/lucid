@@ -12,8 +12,19 @@ namespace Mane.GameCore
     {
         public PhysicsObject collider = new PhysicsObject();
 
-        private Vector2 _position;
+        private Vector2 _position = Vector2.Zero;
         private Vector2 _size;
+
+        private static Random _objr = new Random();
+        private readonly int _objectID = _objr.Next(0, int.MaxValue);
+
+        public int ObjectID
+        {
+            get
+            {
+                return _objectID;
+            }
+        }
 
         public Vector2 Position {
             get { return _position; }
@@ -33,10 +44,42 @@ namespace Mane.GameCore
 
         public SpriteEffects DrawEffects;
 
+        public Color RenderColor;
+
         public GameObject()
         {
             collider = new PhysicsObject();
             DrawEffects = SpriteEffects.None;
+            RenderColor = Color.White;
+        }
+
+        public GameObject(string Name)
+        {
+            this.Name = Name;
+            collider = new PhysicsObject();
+            DrawEffects = SpriteEffects.None;
+            RenderColor = Color.White;
+        }
+
+        public GameObject(string Name, string Texture)
+        {
+            this.Name = Name;
+            this.Texture = GameContent.GetTexture(Texture);
+            Size = new Vector2(this.Texture.Width, this.Texture.Height);
+            collider = new PhysicsObject();
+            DrawEffects = SpriteEffects.None;
+            RenderColor = Color.White;
+        }
+
+        public GameObject(string Name, string Texture, Vector2 Position, Vector2 Size)
+        {
+            this.Name = Name;
+            this.Texture = GameContent.GetTexture(Texture);
+            this.Position = Position;
+            this.Size = Size;
+            collider = new PhysicsObject();
+            DrawEffects = SpriteEffects.None;
+            RenderColor = Color.White;
         }
 
         public void NewScript(string Name, string Path)
@@ -131,9 +174,10 @@ namespace Mane.GameCore
 
         public override void Render(SpriteBatch spriteBatch)
         {
+            if(Texture == null) { return; }
             //TODO: implement rotations, for rendering and for physics --\|/
             //TODO: implement layers to work with physics (or not?) -----------------------------\|||||/
-            spriteBatch.Draw(Texture, GetRenderRect(), null, Color.White, 0, Vector2.Zero, DrawEffects, Layer);
+            spriteBatch.Draw(Texture, GetRenderRect(), null, RenderColor, 0, Vector2.Zero, DrawEffects, Layer);
         }
 
         public Rectangle GetRenderRect()

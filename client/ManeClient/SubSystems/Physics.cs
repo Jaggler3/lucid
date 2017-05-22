@@ -25,6 +25,11 @@ namespace Mane.SubSystems
             }
         }
 
+        internal static void Clear()
+        {
+            world.Clear();
+        }
+
         public static void AddObject(PhysicsObject po)
         {
             world.Add(null);

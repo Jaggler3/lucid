@@ -48,12 +48,16 @@
     <Compile Include="Core\PhysicsObject.cs" />
     <Compile Include="Core\Renderable.cs" />
     <Compile Include="Core\Utilities.cs" />
+    <Compile Include="Foundation\GameData.cs" />
+    <Compile Include="Foundation\UnitData.cs" />
     <Compile Include="GameCore\Entity.cs" />
     <Compile Include="GameCore\GameObject.cs" />
     <Compile Include="GameCore\GameState.cs" />
     <Compile Include="GameCore\GameScript.cs" />
     <Compile Include="GameCore\ScriptBindings.cs" />
-    <Compile Include="Management\TestState.cs" />
+    <Compile Include="Management\MainState.cs" />
+    <Compile Include="Management\MenuState.cs" />
+    <Compile Include="Management\StartState.cs" />
     <Compile Include="MonoGameInitialize.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +67,10 @@
     <Compile Include="SubSystems\Rendering.cs" />
     <Compile Include="SubSystems\Scene.cs" />
     <Compile Include="SubSystems\UserInput.cs" />
+    <Compile Include="UI\Button.cs" />
+    <Compile Include="UI\Overlay.cs" />
+    <Compile Include="UI\TextDisplay.cs" />
+    <Compile Include="UI\UIObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Jitter">
@@ -95,7 +103,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)\Lua" "$(TargetDir)\Lua\" /s /i /y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)\Data" "$(TargetDir)\Data\" /s /i /y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

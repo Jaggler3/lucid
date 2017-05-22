@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Mane.Core;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 
@@ -8,19 +10,31 @@ namespace Mane.SubSystems
     {
         public const int INIT_WIDTH = 1280;
         public const int INIT_HEIGHT = 700;
-        public const string TITLE = "Mane v0.1.0";
+        public const string TITLE = "Mane v" + Utilities.GameVersion;
 
         public static Game mg_obj;
         public static GraphicsDeviceManager graphics;
+
+        public static bool INIT_FULLSCREEN = false;
 
         public static void Setup(Game _mg, GraphicsDeviceManager _graphics)
         {
             mg_obj = _mg;
             graphics = _graphics;
             SetTitle(TITLE);
-            SetSize(INIT_WIDTH, INIT_HEIGHT);
+
+            if(INIT_FULLSCREEN)
+            {
+                DisplayMode _DisplayMode = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
+                SetSize(_DisplayMode.Width, _DisplayMode.Height);
+                ToggleFullscreen();
+            }
+            else
+            {
+                SetSize(INIT_WIDTH, INIT_HEIGHT);
+                ShowMouse();
+            }
             DisableVSync();
-            ShowMouse();
         }
 
         public static void ShowMouse()
@@ -31,6 +45,21 @@ namespace Mane.SubSystems
         public static void HideMouse()
         {
             mg_obj.IsMouseVisible = false;
+        }
+
+        public static void ToggleFullscreen()
+        {
+            graphics.ToggleFullScreen();
+        }
+
+        public static Vector2 GetSize()
+        {
+            return new Vector2(GetWidth(), GetHeight());
+        }
+
+        public static void SetSize(Vector2 Size)
+        {
+            SetSize((int)Size.X, (int)Size.Y);
         }
 
         public static void SetSize(int width, int height)

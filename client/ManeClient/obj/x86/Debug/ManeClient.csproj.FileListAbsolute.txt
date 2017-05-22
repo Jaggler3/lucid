@@ -21,7 +21,6 @@ C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\SharpDX.Direc
 C:\Users\marti\Desktop\vrm\client\ManeClient\obj\x86\Debug\ManeClient.csprojResolveAssemblyReference.cache
 C:\Users\marti\Desktop\vrm\client\ManeClient\obj\x86\Debug\ManeClient.exe
 C:\Users\marti\Desktop\vrm\client\ManeClient\obj\x86\Debug\ManeClient.pdb
-C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\unit.xnb
 C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\wall_left.xnb
 C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\wall_right.xnb
 C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\player\player_idle_right.xnb
@@ -33,3 +32,12 @@ C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Jitter.dll
 C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Jitter.xml
 C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\debug.xnb
 C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\player\player_idle.xnb
+C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\splash\dev.xnb
+C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\splash\monogame.xnb
+C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\MainFont.xnb
+C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\black.xnb
+C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\ui\button.xnb
+C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\ui\button_hover.xnb
+C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\white.xnb
+C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\units\corner_left.xnb
+C:\Users\marti\Desktop\vrm\client\ManeClient\bin\Windows\x86\Debug\Content\units\unit.xnb

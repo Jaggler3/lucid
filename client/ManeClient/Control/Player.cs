@@ -8,12 +8,13 @@ namespace Mane.Control
 {
     class Player
     {
+        //The player GameObject
         public static GameObject gameObject = new GameObject();
 
-        public const int unitScale = 80;
-
+        //The size of the player, has a ratio of the actual texture
         public static Vector2 playerSize = new Vector2(32, 70);
 
+        //Create the player GameObject
         public static GameObject Initialize()
         {
             gameObject.Name = "Player";
@@ -22,11 +23,13 @@ namespace Mane.Control
             gameObject.Size = playerSize;
 
             gameObject.collider.Mass = 1;
+            gameObject.collider.Static = false;
 
-            gameObject.NewScript("Test", "Lua/player.lua");
+            gameObject.NewScript("Player", "Data/player.lua");
 
             return gameObject;
         }
+
 
         public static void Update(GameTime gameTime)
         {

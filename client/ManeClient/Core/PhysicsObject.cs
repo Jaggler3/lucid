@@ -14,7 +14,7 @@ namespace Mane.Core
 
         public float Mass;
 
-        public bool Static = false;
+        public bool Static = true;
 
         public PhysicsObject()
         {
@@ -55,6 +55,7 @@ namespace Mane.Core
             this.Size = Size;
         }
 
+        //Returns true if the given position and size of an object overlaps this PhysicsObject
         public bool HasCollision(Vector2 poSize, Vector2 poPosition)
         {
             if (Size.X == 0 || Size.Y == 0 || poSize.X == 0 || poSize.Y == 0)
@@ -65,6 +66,11 @@ namespace Mane.Core
             return !Rectangle.Intersect(GetRect(), GetRect(poPosition, poSize)).IsEmpty;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="po">The PhysicsObject that we are testing an overlap on</param>
+        /// <returns>True if <paramref name="po"/> overlaps this PhysicsObject</returns>
         public bool HasCollision(PhysicsObject po)
         {
             if(Size.X == 0 || Size.Y == 0 || po.Size.X == 0 || po.Size.Y == 0)

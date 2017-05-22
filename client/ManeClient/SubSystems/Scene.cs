@@ -21,6 +21,7 @@ namespace Mane.SubSystems
         public static void SetState(GameState state)
         {
             currentState.Terminate();
+            Physics.Clear();
             currentState = state;
             currentState.Begin();
         }

@@ -14,7 +14,7 @@ namespace Mane
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        GameState INIT_STATE = new TestState();
+        GameState INIT_STATE = new MainState();
 
         public MonoGameInitialize()
         {
@@ -36,9 +36,13 @@ namespace Mane
             spriteBatch = new SpriteBatch(GraphicsDevice);
             
             // Load Game Files
-            for (int i = 0; i < GameContent.TextureNames.Length; i++)
+            for (int i = 0; i < GameContent.TextureNames.Length; i++) // textures
             {
                 GameContent.LoadedTextures[i] = Content.Load<Texture2D>(GameContent.TextureNames[i]);
+            }
+            for (int i = 0; i < GameContent.FontNames.Length; i++) // fonts
+            {
+                GameContent.LoadedFonts[i] = Content.Load<SpriteFont>(GameContent.FontNames[i]);
             }
 
             //Start first gamestate
@@ -64,7 +68,7 @@ namespace Mane
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Rendering.BackgroundColor);
 
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, null);
 
@@ -72,6 +76,15 @@ namespace Mane
             for (int i = 0; i < entity_list.Count; i++)
             {
                 entity_list[i].Render(spriteBatch);
+            }
+
+            spriteBatch.End(); //Start a new SpriteBatch so that previous shaders and layering does not apply to the UI
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, null);
+
+            var ui_list = Scene.GetState().UserInterface;
+            for (int i = 0; i < ui_list.Count; i++)
+            {
+                ui_list[i].Render(spriteBatch);
             }
 
             spriteBatch.End();

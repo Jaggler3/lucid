@@ -6,14 +6,15 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Mane.SubSystems;
 using Mane.Control;
+using Mane.Foundation;
 
 namespace Mane.GameCore
 {
     class GameScript
     {
+
         public static void Initialize()
         {
-            // Register script-accessable types
             UserData.RegisterType<Vector2>();
             UserData.RegisterType<Entity>();
             UserData.RegisterType<Renderable>();
@@ -73,7 +74,7 @@ namespace Mane.GameCore
             SetGlobal("Input", input);
             SetGlobal("Loader", loader);
             SetGlobal("Physics", physics);
-            SetGlobal("_UnitSize", Player.unitScale);
+            SetGlobal("_UnitSize", GameData.UNIT_SIZE);
             SetGlobal("Rendering", renderingAccess);
 
             DynValue res = _script.DoString("ManeScript = {};" + Source + "return ManeScript;");

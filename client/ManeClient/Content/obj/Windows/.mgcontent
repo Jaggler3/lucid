@@ -4,9 +4,17 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/unit.png</File>
     <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/wall_left.png</File>
     <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/wall_right.png</File>
     <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/player/player_idle.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/splash/dev.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/splash/monogame.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/MainFont.spritefont</File>
+    <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/black.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/ui/button.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/ui/button_hover.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/white.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/units/corner_left.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/ManeClient/Content/units/unit.png</File>
   </SourceFiles>
 </SourceFileCollection>
