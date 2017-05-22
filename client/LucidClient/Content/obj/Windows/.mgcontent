@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/marti/Desktop/vrm/client/LucidClient/Content/wall_left.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/LucidClient/Content/wall_right.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/LucidClient/Content/player/player_idle.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/LucidClient/Content/splash/dev.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/LucidClient/Content/splash/monogame.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/LucidClient/Content/MainFont.spritefont</File>
+    <File>C:/Users/marti/Desktop/vrm/client/LucidClient/Content/black.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/LucidClient/Content/ui/button.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/LucidClient/Content/ui/button_hover.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/LucidClient/Content/white.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/LucidClient/Content/units/corner_left.png</File>
+    <File>C:/Users/marti/Desktop/vrm/client/LucidClient/Content/units/unit.png</File>
+  </SourceFiles>
+</SourceFileCollection>
